@@ -5,6 +5,6 @@ export = {
 }
 
 function addArt(artDetails) {
-  .post(/api/users)
+  .post('/api/users')
   .send(artDetails)
 }
