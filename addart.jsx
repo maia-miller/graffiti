@@ -1,9 +1,10 @@
 import react from 'react'
 import {addArt} from '../api.js'
+import {connect} from 'react-redux'
 
 class AddArt extends React.Component {
   constructor (props) {
-    super(props) {
+    super(props) 
       this.state = {
         suburb: '',
         address: '',
@@ -12,17 +13,18 @@ class AddArt extends React.Component {
         style:''
       }
       this.handleChange = this.handleChange.bind(this)
+      this.onSubmit = this.onSubmit.bind(this)
     }
 
     handleChange(e) {
       this.setState=({[e.target.name]: [e.target.value]})
     }
 
-    submit() {
+    onSubmit(e) {
+      e.preventDefault()
       addArt(this.state)
     }
 
-  }
   render () {
     return (
       <form>
@@ -40,16 +42,23 @@ class AddArt extends React.Component {
 
         <label>Style</label>
         <select name="style" onChange={this.handleChange()} >
-          <option>Art Deco</option>
+          <option value={}>Art Deco</option>
           <option>Abstract</option>
           <option>Realistic</option>
         </select>
 
-        <button onClick={this.submit}>Add Art</button>
+        <button onClick={this.onSubmit}>Add Art</button>
       
       </form>
     )
   }
 }
 
-export default AddArt
+const mapStateToProps = ({species} => {
+    return {
+    }
+}
+)
+
+                         
+export default connect(mapStateToProps)(AddArt)
